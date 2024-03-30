@@ -23,8 +23,13 @@ apiRoutes.post("/", (req, res) => {
   const newJobId = Math.floor(100000 + Math.random() * 900000).toString();
   newJob.id = newJobId;
 
-  // Temporarily add new job to jsonData
-  jsonData.jobs.push(newJob);
+  // Create a shallow copy of jsonData before modifying it
+  const updatedData = { ...jsonData };
+  updatedData.jobs.push(newJob);
+
+  // Update the reference to the jsonData object
+  Object.assign(jsonData, updatedData);
+
   res.send({ success: true, msg: "Job Created Successfully!", job: newJob });
 });
 
@@ -34,7 +39,14 @@ apiRoutes.put("/:id", (req, res) => {
   const index = jsonData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
     const updatedJob = { ...req.body, id: jobId };
-    jsonData.jobs[index] = updatedJob;
+
+    // Create a shallow copy of jsonData before modifying it
+    const updatedData = { ...jsonData };
+    updatedData.jobs[index] = updatedJob;
+
+    // Update the reference to the jsonData object
+    Object.assign(jsonData, updatedData);
+
     res.send({
       success: true,
       msg: `Job with id ${jobId} has been updated`,
@@ -50,7 +62,13 @@ apiRoutes.delete("/:id", (req, res) => {
   const jobId = req.params.id;
   const index = jsonData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
-    const deletedJob = jsonData.jobs.splice(index, 1)[0];
+    // Create a shallow copy of jsonData before modifying it
+    const updatedData = { ...jsonData };
+    const deletedJob = updatedData.jobs.splice(index, 1)[0];
+
+    // Update the reference to the jsonData object
+    Object.assign(jsonData, updatedData);
+
     res.send({
       success: true,
       msg: `Job with id ${jobId} has been deleted`,
