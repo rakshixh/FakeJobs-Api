@@ -8,6 +8,14 @@
   ],
   "routes": [
     {
+      "src": "/jobs/_limit=(\\d+)",
+      "dest": "/jobs?_limit=$1"
+    },
+    {
+      "src": "/jobs/([^/]+)",
+      "dest": "/jobs/:id"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
     }
