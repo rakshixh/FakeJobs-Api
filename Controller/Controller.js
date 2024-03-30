@@ -1,8 +1,23 @@
 const express = require("express");
 const apiRoutes = express.Router();
 
-// Import JSON data from Data.js
-const jsonData = require("./Data");
+// Import JSON data from Data.js initially
+let jsonData = require("./Data");
+
+// Function to update jsonData with fresh data from Data.js
+const updateData = () => {
+  try {
+    delete require.cache[require.resolve("./Data")]; // Clear cache to force re-import
+    jsonData = require("./Data");
+    console.log("Data updated at: ", new Date());
+  } catch (error) {
+    console.error("Error updating data:", error);
+  }
+};
+
+// Call updateData initially and then every 4 minutes
+updateData(); // Initial update
+const interval = setInterval(updateData, 2 * 60 * 1000);
 
 // To get the data
 apiRoutes.get("/", (req, res) => {
@@ -23,13 +38,8 @@ apiRoutes.post("/", (req, res) => {
   const newJobId = Math.floor(100000 + Math.random() * 900000).toString();
   newJob.id = newJobId;
 
-  // Create a shallow copy of jsonData before modifying it
-  const updatedData = { ...jsonData };
-  updatedData.jobs.push(newJob);
-
-  // Update the reference to the jsonData object
-  Object.assign(jsonData, updatedData);
-
+  // Temporarily add new job to jsonData
+  jsonData.jobs.push(newJob);
   res.send({ success: true, msg: "Job Created Successfully!", job: newJob });
 });
 
@@ -39,14 +49,7 @@ apiRoutes.put("/:id", (req, res) => {
   const index = jsonData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
     const updatedJob = { ...req.body, id: jobId };
-
-    // Create a shallow copy of jsonData before modifying it
-    const updatedData = { ...jsonData };
-    updatedData.jobs[index] = updatedJob;
-
-    // Update the reference to the jsonData object
-    Object.assign(jsonData, updatedData);
-
+    jsonData.jobs[index] = updatedJob;
     res.send({
       success: true,
       msg: `Job with id ${jobId} has been updated`,
@@ -62,13 +65,7 @@ apiRoutes.delete("/:id", (req, res) => {
   const jobId = req.params.id;
   const index = jsonData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
-    // Create a shallow copy of jsonData before modifying it
-    const updatedData = { ...jsonData };
-    const deletedJob = updatedData.jobs.splice(index, 1)[0];
-
-    // Update the reference to the jsonData object
-    Object.assign(jsonData, updatedData);
-
+    const deletedJob = jsonData.jobs.splice(index, 1)[0];
     res.send({
       success: true,
       msg: `Job with id ${jobId} has been deleted`,
