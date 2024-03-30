@@ -17,7 +17,7 @@ const updateData = () => {
 
 // Call updateData initially and then every 4 minutes
 updateData(); // Initial update
-const interval = setInterval(updateData, 2 * 60 * 1000);
+const interval = setInterval(updateData, 3 * 60 * 1000);
 
 // To get the data
 apiRoutes.get("/", (req, res) => {
@@ -29,6 +29,19 @@ apiRoutes.get("/", (req, res) => {
     res.send(limitedJobs);
   } else {
     res.send(jobs);
+  }
+});
+
+// To get the data for a specific job by ID
+apiRoutes.get("/:id", (req, res) => {
+  const jobId = req.params.id;
+  const job = jsonData.jobs.find((job) => job.id === jobId);
+  if (job) {
+    res.send(job);
+  } else {
+    res
+      .status(404)
+      .send({ success: false, msg: "No job found with the provided ID." });
   }
 });
 
