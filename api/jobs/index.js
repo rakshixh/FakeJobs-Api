@@ -1,11 +1,12 @@
-const express = require("express");
-const apiRoutes = express.Router();
-const fs = require("fs");
+// api/jobs/index.js
 
-const dataPath = "./Database/data.json";
+const fs = require("fs");
+const path = require("path");
 
 // Store original data from data.json in memory cache
 let cachedData = { jobs: [] };
+
+const dataPath = path.join(__dirname, "../../Database/data.json");
 
 const readDataFromFile = () => {
   try {
@@ -18,71 +19,82 @@ const readDataFromFile = () => {
 
 readDataFromFile(); // Initial read on server start
 
-// Middleware to update cache before each API request
-apiRoutes.use((req, res, next) => {
+module.exports = async (req, res) => {
+  const { method } = req;
+
+  // Middleware to update cache before each API request
   readDataFromFile();
-  next();
-});
 
-apiRoutes.get("/", (req, res) => {
-  res.send("Welcome to the Stateless Jobs API!");
-});
+  switch (method) {
+    case "GET":
+      handleGetRequest(req, res);
+      break;
+    case "POST":
+      handlePostRequest(req, res);
+      break;
+    case "PUT":
+      handlePutRequest(req, res);
+      break;
+    case "DELETE":
+      handleDeleteRequest(req, res);
+      break;
+    default:
+      res.setHeader("Allow", ["GET", "POST", "PUT", "DELETE"]);
+      res.status(405).end(`Method ${method} Not Allowed`);
+  }
+};
 
-// To get the data
-apiRoutes.get("/jobs", (req, res) => {
+const handleGetRequest = (req, res) => {
   const jobs = cachedData.jobs;
   const limit = req.query._limit;
 
   if (limit && !isNaN(limit)) {
     const limitedJobs = jobs.slice(0, parseInt(limit));
-    res.send(limitedJobs);
+    res.json(limitedJobs);
   } else {
-    res.send(jobs);
+    res.json(jobs);
   }
-});
+};
 
-// To upload the data
-apiRoutes.post("/jobs", (req, res) => {
+const handlePostRequest = (req, res) => {
   const newJob = req.body;
   const newJobId = Math.floor(100000 + Math.random() * 900000).toString();
   newJob.id = newJobId;
 
   // Temporarily add new job to cachedData
   cachedData.jobs.push(newJob);
-  res.send({ success: true, msg: "Job Created Successfully!", job: newJob });
-});
+  res
+    .status(201)
+    .json({ success: true, msg: "Job Created Successfully!", job: newJob });
+};
 
-// To update the data
-apiRoutes.put("/jobs/:id", (req, res) => {
-  const jobId = req.params.id;
+const handlePutRequest = (req, res) => {
+  const jobId = req.query.id;
   const index = cachedData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
     const updatedJob = { ...req.body, id: jobId };
     cachedData.jobs[index] = updatedJob;
-    res.send({
+    res.json({
       success: true,
       msg: `Job with id ${jobId} has been updated`,
       job: updatedJob,
     });
   } else {
-    res.status(404).send({ success: true, msg: "Job not found!" });
+    res.status(404).json({ success: false, msg: "Job not found!" });
   }
-});
+};
 
-// To delete the data
-apiRoutes.delete("/jobs/:id", (req, res) => {
-  const jobId = req.params.id;
+const handleDeleteRequest = (req, res) => {
+  const jobId = req.query.id;
   const index = cachedData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
     const deletedJob = cachedData.jobs.splice(index, 1)[0];
-    res.send({
+    res.json({
       success: true,
       msg: `Job with id ${jobId} has been deleted`,
       job: deletedJob,
     });
   } else {
-    res.status(404).send({ success: false, msg: "Job not found!" });
+    res.status(404).json({ success: false, msg: "Job not found!" });
   }
-});
-
-module.exports = apiRoutes;
+};
