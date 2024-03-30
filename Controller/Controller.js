@@ -1,32 +1,12 @@
 const express = require("express");
 const apiRoutes = express.Router();
-const fs = require("fs");
 
-const dataPath = "./Database/data.json";
-
-// Store original data from data.json in memory cache
-let cachedData = { jobs: [] };
-
-const readDataFromFile = () => {
-  try {
-    const jsonData = fs.readFileSync(dataPath);
-    cachedData = JSON.parse(jsonData);
-  } catch (error) {
-    console.error("Error reading data from file:", error);
-  }
-};
-
-readDataFromFile(); // Initial read on server start
-
-// Middleware to update cache before each API request
-apiRoutes.use((req, res, next) => {
-  readDataFromFile();
-  next();
-});
+// Import JSON data from Data.js
+const jsonData = require("./Data");
 
 // To get the data
 apiRoutes.get("/", (req, res) => {
-  const jobs = cachedData.jobs;
+  const jobs = jsonData.jobs;
   const limit = req.query._limit;
 
   if (limit && !isNaN(limit)) {
@@ -43,18 +23,18 @@ apiRoutes.post("/", (req, res) => {
   const newJobId = Math.floor(100000 + Math.random() * 900000).toString();
   newJob.id = newJobId;
 
-  // Temporarily add new job to cachedData
-  cachedData.jobs.push(newJob);
+  // Temporarily add new job to jsonData
+  jsonData.jobs.push(newJob);
   res.send({ success: true, msg: "Job Created Successfully!", job: newJob });
 });
 
 // To update the data
 apiRoutes.put("/:id", (req, res) => {
   const jobId = req.params.id;
-  const index = cachedData.jobs.findIndex((job) => job.id === jobId);
+  const index = jsonData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
     const updatedJob = { ...req.body, id: jobId };
-    cachedData.jobs[index] = updatedJob;
+    jsonData.jobs[index] = updatedJob;
     res.send({
       success: true,
       msg: `Job with id ${jobId} has been updated`,
@@ -68,9 +48,9 @@ apiRoutes.put("/:id", (req, res) => {
 // To delete the data
 apiRoutes.delete("/:id", (req, res) => {
   const jobId = req.params.id;
-  const index = cachedData.jobs.findIndex((job) => job.id === jobId);
+  const index = jsonData.jobs.findIndex((job) => job.id === jobId);
   if (index !== -1) {
-    const deletedJob = cachedData.jobs.splice(index, 1)[0];
+    const deletedJob = jsonData.jobs.splice(index, 1)[0];
     res.send({
       success: true,
       msg: `Job with id ${jobId} has been deleted`,
