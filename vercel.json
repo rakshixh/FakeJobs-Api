@@ -12,6 +12,10 @@
       "dest": "/jobs?_limit=$1"
     },
     {
+      "src": "/jobs",
+      "dest": "/jobs"
+    },
+    {
       "src": "/jobs/([^/]+)",
       "dest": "/jobs/:id"
     },
