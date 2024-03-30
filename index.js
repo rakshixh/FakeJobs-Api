@@ -14,7 +14,7 @@ app.use(cors());
 
 // route
 app.get("/", (req, res) => {
-  res.send("Welcome to the Stateless Jobs API!");
+  res.send("Welcome to the Fake Jobs API!");
 });
 
 const routes = require("./Routes/routes");
