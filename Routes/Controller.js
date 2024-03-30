@@ -24,6 +24,10 @@ apiRoutes.use((req, res, next) => {
   next();
 });
 
+apiRoutes.get("/", (req, res) => {
+  res.send("Welcome to the Stateless Jobs API!");
+});
+
 // To get the data
 apiRoutes.get("/jobs", (req, res) => {
   const jobs = cachedData.jobs;
