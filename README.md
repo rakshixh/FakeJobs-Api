@@ -74,7 +74,7 @@ We expect all contributors to abide by the terms of our [Code of Conduct]().
 
 This repository is licensed under the MIT license
 
-![GitHub watchers](https://img.shields.io/github/watchers/rakshixh/FakeJobs-Api?label=Number%20of%20Watchers&style=flat&labelColor=darkgreen&color=black)
-![GitHub forks](https://img.shields.io/github/forks/rakshixh/FakeJobs-Api?label=Number%20of%20Forks&style=flat&labelColor=darkgreen&color=black)
-![GitHub Repo stars](https://img.shields.io/github/stars/rakshixh/FakeJobs-Api?style=flat&label=Number%20of%20Stars&labelColor=darkgreen&color=black)
-![GitHub issues](https://img.shields.io/github/issues/rakshixh/FakeJobs-Api?label=Number%20of%20Issues&labelColor=darkgreen&color=black)
+![GitHub watchers](https://img.shields.io/github/watchers/rakshixh/FakeJobs-Api?label=Number%20of%20Watchers&style=flat&labelColor=red&color=black)
+![GitHub forks](https://img.shields.io/github/forks/rakshixh/FakeJobs-Api?label=Number%20of%20Forks&style=flat&labelColor=red&color=black)
+![GitHub Repo stars](https://img.shields.io/github/stars/rakshixh/FakeJobs-Api?style=flat&label=Number%20of%20Stars&labelColor=red&color=black)
+![GitHub issues](https://img.shields.io/github/issues/rakshixh/FakeJobs-Api?label=Number%20of%20Issues&labelColor=red&color=black)
