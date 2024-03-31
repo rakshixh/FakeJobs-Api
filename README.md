@@ -29,7 +29,7 @@ Developers can use this API to create applications for various purposes, includi
 - **Response**: An array of job objects.
 
 > [!NOTE]
-> This API will return 30 job listing data.
+> This API will return 30 job listing objects.
 
 ### Get a specific job by ID
 
