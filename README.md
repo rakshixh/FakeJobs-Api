@@ -28,6 +28,9 @@ Developers can use this API to create applications for various purposes, includi
 - **Usage**: Send a GET request to `/jobs` to retrieve all job listings.
 - **Response**: An array of job objects.
 
+> [!NOTE]
+> This API will return 30 job listing data.
+
 ### Get a specific job by ID
 
 - **Endpoint**: `/jobs/:id`
@@ -66,9 +69,6 @@ Check the [Contributing Guide]() out. <br>
 Head over to our [issue tracker]() to check more about it. <br>
 We expect all contributors to abide by the terms of our [Code of Conduct]().
 <br>
-
-> [!NOTE]
-> Questions may be updated. Contributions of new questions, options, and answers are welcome.
 
 <h2>🛡️ License:</h2>
 
