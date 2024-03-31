@@ -14,6 +14,10 @@ Developers can use this API to create applications for various purposes, includi
 - **Proof of concept projects**: Quickly prototype job-related applications using dummy data.
 - **Learning projects**: Practice frontend development skills by integrating with a backend API.
 
+## Deployed Base URL
+
+### https://fakejobs-api.vercel.app/
+
 ## Endpoints
 
 ### Get all jobs
@@ -55,3 +59,22 @@ Developers can use this API to create applications for various purposes, includi
 - **Description**: Deletes a job listing by its ID.
 - **Usage**: Send a DELETE request to `/jobs/:id`, where `:id` is the ID of the job you want to delete.
 - **Response**: If successful, returns a success message along with the deleted job object. If no job is found with the provided ID, a 404 response is returned with a message indicating that no job was found.
+
+<h2>Contribution Guidelines:</h2>
+
+Check the [Contributing Guide]() out. <br>
+Head over to our [issue tracker]() to check more about it. <br>
+We expect all contributors to abide by the terms of our [Code of Conduct]().
+<br>
+
+> [!NOTE]
+> Questions may be updated. Contributions of new questions, options, and answers are welcome.
+
+<h2>🛡️ License:</h2>
+
+This repository is licensed under the MIT license
+
+![GitHub watchers](https://img.shields.io/github/watchers/rakshixh/FakeJobs-Api?label=Number%20of%20Watchers&style=flat&labelColor=darkgreen&color=black)
+![GitHub forks](https://img.shields.io/github/forks/rakshixh/FakeJobs-Api?label=Number%20of%20Forks&style=flat&labelColor=darkgreen&color=black)
+![GitHub Repo stars](https://img.shields.io/github/stars/rakshixh/FakeJobs-Api?style=flat&label=Number%20of%20Stars&labelColor=darkgreen&color=black)
+![GitHub issues](https://img.shields.io/github/issues/rakshixh/FakeJobs-Api?label=Number%20of%20Issues&labelColor=darkgreen&color=black)
