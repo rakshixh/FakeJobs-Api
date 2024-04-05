@@ -141,7 +141,7 @@ Developers can use this API to create applications for various purposes, includi
 ```
 - **Example of 404 not found response**:
 ```
-  {
+{
     "success": true,
     "msg": "Job not found!"
 }
@@ -156,6 +156,34 @@ Developers can use this API to create applications for various purposes, includi
 - **Description**: Deletes a job listing by its ID.
 - **Usage**: Send a DELETE request to `/jobs/:id`, where `:id` is the ID of the job you want to delete.
 - **Response**: If successful, returns a success message along with the deleted job object. If no job is found with the provided ID, a 404 response is returned with a message indicating that no job was found.
+- **Example of success response**:
+```
+{
+    "success": true,
+    "msg": "Job with id 1 has been deleted",
+    "job": {
+        "id": "1",
+        "title": "Senior Front-End Developer",
+        "type": "Full-Time",
+        "location": "New York, NY",
+        "description": "Join our team as a Senior Front-End Developer in the heart of New York City. We are looking for an experienced individual with a passion for cutting-edge technologies and a track record of delivering high-quality web applications.",
+        "salary": "$100K - $120K",
+        "company": {
+            "name": "Tech Innovations Inc",
+            "description": "Tech Innovations Inc is a leading technology company specializing in software development and digital solutions. Our team is dedicated to pushing the boundaries of innovation to deliver exceptional products and services.",
+            "contactEmail": "contact@techinnovations.com",
+            "contactPhone": "555-123-4567"
+        }
+    }
+}
+```
+- **Example of 404 not found response**:
+```
+{
+    "success": false,
+    "msg": "Job not found!"
+}
+```
 
 <h2>Contribution Guidelines:</h2>
 
