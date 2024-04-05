@@ -45,7 +45,7 @@ apiRoutes.get("/:id", (req, res) => {
   }
 });
 
-// To upload the data
+// To create or post the data
 apiRoutes.post("/", (req, res) => {
   const newJob = req.body;
   const newJobId = Math.floor(100000 + Math.random() * 900000).toString();
@@ -69,7 +69,7 @@ apiRoutes.put("/:id", (req, res) => {
       job: updatedJob,
     });
   } else {
-    res.status(404).send({ success: true, msg: "Job not found!" });
+    res.status(404).send({ success: false, msg: "Job not found!" });
   }
 });
 
