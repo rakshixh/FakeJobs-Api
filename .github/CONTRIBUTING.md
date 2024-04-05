@@ -73,7 +73,7 @@ git push origin <your-branch-name>
 ### Opening a Pull Request(PR)
 
 #### 1. Create a new Pull Request(PR)
-Go to the [Codefresh-GitOps-for-ArgoCD-Certification](https://github.com/rakshixh/Codefresh-GitOps-for-ArgoCD-Certification) repository and click the `compare & pull request` button or go to the [Pull Request](https://github.com/rakshixh/Codefresh-GitOps-for-ArgoCD-Certification/pulls) page and click on the `New pull request` button. It will take you to the `Open a pull request` page.
+Go to the [FakeJobs-Api](https://github.com/rakshixh/FakeJobs-Api) repository and click the `compare & pull request` button or go to the [Pull Request](https://github.com/rakshixh/FakeJobs-Api/pulls) page and click on the `New pull request` button. It will take you to the `Open a pull request` page.
 
 > Note: Make sure your PR points to the `main` branch, not any other one.
 
