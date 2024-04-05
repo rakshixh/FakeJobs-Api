@@ -126,7 +126,7 @@ Developers can use this API to create applications for various purposes, includi
     "job": {
         "id": "1",
         "title": "Senior Front-End Developer",
-        "type": "wow-Time",
+        "type": "Part-Time",
         "location": "New York, NY",
         "description": "Join our team as a Senior Front-End Developer in the heart of New York City. We are looking for an experienced individual with a passion for cutting-edge technologies and a track record of delivering high-quality web applications.",
         "salary": "$100K - $120K",
