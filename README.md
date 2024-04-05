@@ -50,7 +50,7 @@ Developers can use this API to create applications for various purposes, includi
 - **Description**: Adds a new job listing.
 - **Usage**: Send a POST request to `/jobs` with the details of the new job in the request body.<br>
 > [!NOTE]
-> You can include `id` in the body but still backend will generate new `id` for the created new job listing.
+> You can include `id` in the body but still backend will generate new `id value` for `id` property for the created new job listing.
 - **Example for `Body of the request`**:
 ```
 {
@@ -77,7 +77,7 @@ Developers can use this API to create applications for various purposes, includi
     "job": {
         "id": "197666",
         "title": "Senior Front-End Developer",
-        "type": "wow-Time",
+        "type": "Full-Time",
         "location": "New York, NY",
         "description": "Join our team as a Senior Front-End Developer in the heart of New York City. We are looking for an experienced individual with a passion for cutting-edge technologies and a track record of delivering high-quality web applications.",
         "salary": "$100K - $120K",
@@ -90,6 +90,7 @@ Developers can use this API to create applications for various purposes, includi
     }
 }
 ```
+-----------
 
 ### Update an existing job listing
 
