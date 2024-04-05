@@ -140,7 +140,7 @@ Developers can use this API to create applications for various purposes, includi
 }
 ```
 - **Example of 404 not found response**:
-  ```
+```
   {
     "success": true,
     "msg": "Job not found!"
