@@ -17,7 +17,7 @@ const updateData = () => {
 
 // Call updateData initially and then every 4 minutes
 updateData(); // Initial update
-const interval = setInterval(updateData, 3 * 60 * 1000);
+const interval = setInterval(updateData, 4 * 60 * 1000);
 
 // To get the data
 apiRoutes.get("/", (req, res) => {
