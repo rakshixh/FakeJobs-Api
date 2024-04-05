@@ -100,7 +100,7 @@ Developers can use this API to create applications for various purposes, includi
 - **Usage**: Send a PUT request to `/jobs/:id`, where `:id` is the ID of the job you want to update, with the updated job details in the request body.<br>
 > [!NOTE]
 > You can include `id` in the body but still backend will ignore that and update the other properties as per request body.
-- **Example for `Body of the request`**:
+- **Example for `Body of the request`**:Make sure to include the value of the properties with updated data.
 ```
 {
   "id": "1",
@@ -118,6 +118,36 @@ Developers can use this API to create applications for various purposes, includi
 }
 ```
 - **Response**: If successful, returns a success message along with the updated job object. If no job is found with the provided ID, a 404 response is returned with a message indicating that no job was found.
+- **Example of success response**:
+```
+{
+    "success": true,
+    "msg": "Job with id 1 has been updated",
+    "job": {
+        "id": "1",
+        "title": "Senior Front-End Developer",
+        "type": "wow-Time",
+        "location": "New York, NY",
+        "description": "Join our team as a Senior Front-End Developer in the heart of New York City. We are looking for an experienced individual with a passion for cutting-edge technologies and a track record of delivering high-quality web applications.",
+        "salary": "$100K - $120K",
+        "company": {
+            "name": "Tech Innovations Inc",
+            "description": "Tech Innovations Inc is a leading technology company specializing in software development and digital solutions. Our team is dedicated to pushing the boundaries of innovation to deliver exceptional products and services.",
+            "contactEmail": "contact@techinnovations.com",
+            "contactPhone": "555-123-4567"
+        }
+    }
+}
+```
+- **Example of 404 not found response**:
+  ```
+  {
+    "success": true,
+    "msg": "Job not found!"
+}
+```
+
+-----------
 
 ### Delete a job listing
 
