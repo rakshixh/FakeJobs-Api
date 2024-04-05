@@ -187,6 +187,7 @@ Developers can use this API to create applications for various purposes, includi
 
 <h2>Contribution Guidelines:</h2>
 
+Feel free to contribute to any [existing issues](https://github.com/rakshixh/FakeJobs-Api/issues) or initiate a [new](https://github.com/rakshixh/FakeJobs-Api/issues/new) one to begin your contributions. <br>
 We expect all contributors to abide by the terms of our [Code of Conduct](https://github.com/rakshixh/FakeJobs-Api/blob/master/.github/CODE_OF_CONDUCT.md). <br>
 Head over to our [issue tracker](https://github.com/rakshixh/FakeJobs-Api/issues) to check more about it. <br>
 Check the [Contributing Guide](https://github.com/rakshixh/FakeJobs-Api/blob/master/.github/CONTRIBUTING.md) out. <br>
