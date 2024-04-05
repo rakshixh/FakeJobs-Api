@@ -185,6 +185,11 @@ Developers can use this API to create applications for various purposes, includi
 }
 ```
 
+## Note
+
+The `cache` will be automatically `cleared every 4 minutes`, resetting all API data to its initial state. Consequently, any CRUD operations performed within this timeframe will be reverted, ensuring that API responses consistently reflect the initial data state.
+
+
 <h2>Contribution Guidelines:</h2>
 
 Feel free to Star✨ the repository. Fork🤩, explore🔍 and contribute🧙‍♂️ to any [existing issues](https://github.com/rakshixh/FakeJobs-Api/issues) or initiate a [new](https://github.com/rakshixh/FakeJobs-Api/issues/new) one to begin your contributions. <br>
