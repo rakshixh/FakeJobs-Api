@@ -41,6 +41,8 @@ Developers can use this API to create applications for various purposes, includi
 - **Usage**: Send a GET request to `/jobs/:id`, where `:id` is the ID of the job you want to retrieve.
 - **Response**: The job object with the specified ID. If no job is found, a 404 response is returned with a message indicating that no job was found with the provided ID.
 
+-----------
+
 ### Create a new job listing
 
 - **Endpoint**: `/jobs`
