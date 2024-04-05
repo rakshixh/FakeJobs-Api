@@ -99,7 +99,7 @@ Developers can use this API to create applications for various purposes, includi
 - **Description**: Updates an existing job listing by its ID.
 - **Usage**: Send a PUT request to `/jobs/:id`, where `:id` is the ID of the job you want to update, with the updated job details in the request body.<br>
 > [!NOTE]
-> You can include `id` in the body but still backend will ignore that and update the other properties as per request body.
+> You can include `id` in the body but still backend will ignore that and update the other properties as per request body. If you don't include the `id` property then at the end `id` property with the value of `:id` will be added.
 - **Example for `Body of the request`**:Make sure to include the value of the properties with updated data.
 ```
 {
