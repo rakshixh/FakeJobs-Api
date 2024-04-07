@@ -17,7 +17,7 @@ const updateData = () => {
 
 // Call updateData initially and then every 4 minutes
 updateData(); // Initial update
-const interval = setInterval(updateData, 3 * 60 * 1000);
+const interval = setInterval(updateData, 4 * 60 * 1000);
 
 // To get the data
 apiRoutes.get("/", (req, res) => {
@@ -45,7 +45,7 @@ apiRoutes.get("/:id", (req, res) => {
   }
 });
 
-// To upload the data
+// To create or post the data
 apiRoutes.post("/", (req, res) => {
   const newJob = req.body;
   const newJobId = Math.floor(100000 + Math.random() * 900000).toString();
@@ -69,7 +69,7 @@ apiRoutes.put("/:id", (req, res) => {
       job: updatedJob,
     });
   } else {
-    res.status(404).send({ success: true, msg: "Job not found!" });
+    res.status(404).send({ success: false, msg: "Job not found!" });
   }
 });
 
